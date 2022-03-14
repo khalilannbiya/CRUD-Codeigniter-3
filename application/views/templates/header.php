@@ -24,9 +24,6 @@
           <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>home">Home</a>
           <a class="nav-link" href="<?= base_url(); ?>warga">Warga</a>
           <a class="nav-link" href="<?= base_url(); ?>laporan">Laporan</a>
-          <a class="nav-link" href="<?= base_url(); ?>laporan/terkirim">Terkirim</a>
-          <a class="nav-link" href="<?= base_url(); ?>laporan/diproses">Diproses</a>
-          <a class="nav-link" href="<?= base_url(); ?>laporan/laporanSelesai">Selesai</a>
         </div>
       </div>
     </div>
