@@ -113,4 +113,14 @@ class Laporan extends CI_Controller
       redirect('laporan');
     }
   }
+
+  // public function acakNoUnik()
+  // {
+  //   $data['title'] = "ini adalah data acak";
+  //   $data['acak'] = mt_rand(0000000000, 9999999999);
+
+  //   $this->load->view('templates/header', $data);
+  //   $this->load->view('laporan/acak', $data);
+  //   $this->load->view('templates/footer');
+  // }
 }
