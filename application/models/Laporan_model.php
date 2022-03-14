@@ -24,10 +24,12 @@ class Laporan_model extends CI_Model
 
   public function tambahDataLaporan()
   {
+    $kode = mt_rand(000000, 999999);
     $data = [
       'pelapor' => $this->input->post('pelapor', true),
       'kronologi' => $this->input->post('kronologi', true),
       'status' => 'terkirim',
+      'kode' => $kode,
     ];
 
     $this->db->insert('laporan', $data);
@@ -60,6 +62,23 @@ class Laporan_model extends CI_Model
     $keyword = $this->input->post('keyword', true);
     $this->db->like('pelapor', $keyword);
     $this->db->or_like('status', $keyword);
+    $this->db->or_like('kode', $keyword);
     return $this->db->get('laporan')->result_array();
+  }
+
+  public function ubahToProses($id)
+  {
+    $data =  ['status' => 'diproses'];
+
+    $this->db->where('id', $id);
+    $this->db->update('laporan', $data);
+  }
+
+  public function ubahToSelesai($id)
+  {
+    $data =  ['status' => 'selesai'];
+
+    $this->db->where('id', $id);
+    $this->db->update('laporan', $data);
   }
 }

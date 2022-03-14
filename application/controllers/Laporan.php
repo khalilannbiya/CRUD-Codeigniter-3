@@ -114,13 +114,25 @@ class Laporan extends CI_Controller
     }
   }
 
-  // public function acakNoUnik()
-  // {
-  //   $data['title'] = "ini adalah data acak";
-  //   $data['acak'] = mt_rand(0000000000, 9999999999);
+  public function ubahToProses($id)
+  {
+    // function ini mengerjakan, jika button proses ditekan maka akan berubah statusnya menjadi proses yang tadinya terkirim
+    $data['laporan'] = $this->Laporan_model->ubahToProses($id);
+    $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Selamat!</strong> data laporan telah diproses!.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>');
+    redirect('laporan/diproses');
+  }
 
-  //   $this->load->view('templates/header', $data);
-  //   $this->load->view('laporan/acak', $data);
-  //   $this->load->view('templates/footer');
-  // }
+  public function ubahToSelesai($id)
+  {
+    // function ini mengerjakan, jika button selsai ditekan maka akan berubah statusnya menjadi selesai yang tadinya diproses
+    $data['laporan'] = $this->Laporan_model->ubahToSelesai($id);
+    $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Selamat!</strong> data laporan telah Selesai!.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>');
+    redirect('laporan/laporanSelesai');
+  }
 }

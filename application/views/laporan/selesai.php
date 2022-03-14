@@ -20,6 +20,10 @@
       </div>
     </div>
 
+    <div class="row mt-3">
+      <div class="col-md-6"><?= $this->session->flashdata('pesan'); ?></div>
+    </div>
+
     <div class="card mt-4">
       <div class="card-header">
         <h3>Data Laporan Selesai</h3>

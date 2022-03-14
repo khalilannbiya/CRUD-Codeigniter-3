@@ -43,6 +43,7 @@
                 <td><?= $lpr['pelapor']; ?></td>
                 <td class="text-success text-capitalize fw-bold"><?= $lpr['status']; ?></td>
                 <td>
+                  <a class="badge bg-warning text-decoration-none" href="<?= base_url(); ?>laporan/ubahToProses/<?= $lpr['id']; ?>">Proses</a>
                   <a class="badge bg-primary text-decoration-none" href="<?= base_url(); ?>laporan/detail/<?= $lpr['id']; ?>">Detail</a>
                   <a class="badge bg-success text-decoration-none" href="<?= base_url(); ?>laporan/ubah/<?= $lpr['id']; ?>">Ubah</a>
                   <a class="badge bg-danger text-decoration-none" href="<?= base_url(); ?>laporan/hapus/<?= $lpr['id']; ?>" onclick="return confirm(`Apakah anda yakin untuk menghapus data <?= $lpr['pelapor']; ?> ?`)">Hapus</a>
