@@ -11,6 +11,19 @@
         <input type="text" class="form-control" name="pelapor" id="pelapor" value="<?= $laporan['pelapor']; ?>">
         <div class="form-text text-danger"><?= form_error('pelapor'); ?></div>
       </div>
+      <div class="mb-3">
+        <label for="laporan">Jenis Laporan</label>
+        <select class="form-select mt-2" aria-label="Default select example" name="laporan" id="laporan">
+          <?php foreach ($jenis as $js) : ?>
+            <?php if ($js['jenis_laporan'] === $laporan['laporan']) : ?>
+              <option selected value="<?= $js['jenis_laporan']; ?>"><?= $js['jenis_laporan']; ?></option>
+            <?php else : ?>
+              <option value="<?= $js['jenis_laporan']; ?>"><?= $js['jenis_laporan']; ?></option>
+            <?php endif; ?>
+          <?php endforeach; ?>
+        </select>
+        <div class="form-text text-danger"><?= form_error('laporan'); ?></div>
+      </div>
       <div class="">
         <label for="kronologi">Kronologi</label>
         <textarea name="kronologi" class="form-control mt-2" placeholder="Leave a comment here" id="kronologi" style="height: 100px"><?= $laporan['kronologi']; ?></textarea>

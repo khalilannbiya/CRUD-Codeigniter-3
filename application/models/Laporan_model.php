@@ -27,6 +27,7 @@ class Laporan_model extends CI_Model
     $kode = mt_rand(000000, 999999);
     $data = [
       'pelapor' => $this->input->post('pelapor', true),
+      'laporan' => $this->input->post('laporan', true),
       'kronologi' => $this->input->post('kronologi', true),
       'status' => 'terkirim',
       'kode' => $kode,
@@ -39,6 +40,7 @@ class Laporan_model extends CI_Model
   {
     $data = [
       'pelapor' => $this->input->post('pelapor', true),
+      'laporan' => $this->input->post('laporan', true),
       'kronologi' => $this->input->post('kronologi', true),
       'status' => $this->input->post('status', true),
     ];
@@ -80,5 +82,10 @@ class Laporan_model extends CI_Model
 
     $this->db->where('id', $id);
     $this->db->update('laporan', $data);
+  }
+
+  public function jenisLaporan()
+  {
+    return $this->db->get('jenis_laporan')->result_array();
   }
 }

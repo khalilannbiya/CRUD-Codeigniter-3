@@ -4,6 +4,34 @@
     <div class="row mt-4">
       <div class="col-md-6">
         <a class="btn btn-primary" href="<?= base_url(); ?>laporan/tambahLaporan">Tambah Laporan</a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Tambah Jenis Laporan
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Laporan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="laporan/tambahJenisLaporan" method="POST">
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Tambahkan Jenis Laporan" name="jenis" id="jenis">
+                    <div class="form-text text-danger"><?= form_error('jenis'); ?></div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" name="tambah" class="btn btn-primary float-end">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

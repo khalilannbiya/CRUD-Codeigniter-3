@@ -45,8 +45,12 @@ class Laporan extends CI_Controller
   public function tambahLaporan()
   {
     $data['title'] = "Tambah Data Laporan";
+    $data['jenis'] = $this->Laporan_model->jenisLaporan();
 
     $this->form_validation->set_rules('pelapor', 'Pelapor', 'required', [
+      'required' => '%s Harus diisi!'
+    ]);
+    $this->form_validation->set_rules('laporan', 'Laporan', 'required', [
       'required' => '%s Harus diisi!'
     ]);
     $this->form_validation->set_rules('kronologi', 'Kronologi', 'required', [
@@ -92,8 +96,12 @@ class Laporan extends CI_Controller
     $data['title'] = "Ubah Data Laporan";
     $data['laporan'] = $this->Laporan_model->getDataById($id);
     $data['status'] = ['terkirim', 'diproses', 'selesai'];
+    $data['jenis'] = $this->Laporan_model->jenisLaporan();
 
     $this->form_validation->set_rules('pelapor', 'Pelapor', 'required', [
+      'required' => '%s Harus diisi!'
+    ]);
+    $this->form_validation->set_rules('laporan', 'Laporan', 'required', [
       'required' => '%s Harus diisi!'
     ]);
     $this->form_validation->set_rules('kronologi', 'Kronologi', 'required', [
@@ -134,5 +142,39 @@ class Laporan extends CI_Controller
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>');
     redirect('laporan/laporanSelesai');
+  }
+
+  public function print($id)
+  {
+    $data['title'] = "Laporan Print";
+    $data['laporan'] = $this->Laporan_model->getDataById($id);
+
+    $this->load->view('laporan/print', $data);
+  }
+
+  public function tambahJenisLaporan()
+  {
+    $this->form_validation->set_rules('jenis', 'Jenis Laporan', 'required', [
+      'required' => '%s Harus diisi!'
+    ]);
+
+    if (!$this->form_validation->run()) {
+      $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Wahhh!</strong> belum ditambahkan!.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>');
+      redirect('laporan');
+    } else {
+      $data = [
+        'jenis_laporan' => strtolower($this->input->post('jenis', true)),
+      ];
+
+      $this->db->insert('jenis_laporan', $data);
+      $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Selamat!</strong> data jenis laporan telah ditambahkan!.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>');
+      redirect('laporan');
+    }
   }
 }
